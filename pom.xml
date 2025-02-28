@@ -16,6 +16,20 @@
     </properties>
 
     <!-- TODO: Sett dine dependencies for JavaFX og JUnit5-testing -->
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.11.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>23.0.1</version>
+        </dependency>
+    </dependencies>
+    <!-- TODO: Sett riktig versjon av nødvendige plugins -->
     <build>
         <plugins>
             <!--TheJavacompiler-->
@@ -42,7 +56,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <!-- TODO: Sett riktig versjon av nødvendige plugins -->
-
 </project>
