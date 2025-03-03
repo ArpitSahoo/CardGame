@@ -5,11 +5,11 @@ import java.util.List;
 /**
  * Represents the dealers hand.
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 public class Hand {
-  private DeckOfCards deck;
-  private List<PlayingCard> cardsInHand;
+  private final DeckOfCards deck;
+  private final List<PlayingCard> cardsInHand;
 
   public Hand() {
     deck = new DeckOfCards();
@@ -18,9 +18,7 @@ public class Hand {
 
 
   public void newRound() {
-    boolean newGame = false;
     if (cardsInHand.isEmpty()) {
-      newGame = true;
       dealToHand(6); // 6 til the user interface has been developed.
     }
     removeCardsFromHand();
