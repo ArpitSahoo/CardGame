@@ -27,5 +27,10 @@ class DeckOfCardsTest {
     assertEquals(52, deck.getCards().size());
   }
 
+  @Test
+  void addToDeckNegativeTest(){
+    assertNotEquals(-1, deck.getCards().size());
+    assertNotEquals(55, deck.getCards().get(0).getSuit());
+  }
 
 }
