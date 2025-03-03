@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * Represents a Deck, which is a collection of {@link PlayingCard} objects.
  *
- * @version 0.1.0
+ * @version 0.2.0
  */
 public class DeckOfCards {
   private List<PlayingCard> cards;
