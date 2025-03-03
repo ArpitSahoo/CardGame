@@ -70,9 +70,9 @@ public class DeckOfCards {
    */
   public PlayingCard getRandomCard() {
     int index = randomIndexNumber(); // Get a random index
-    PlayingCard randomCard = cards.get(index); // Retrieve the card at that index
+    PlayingCard randomCardToGet = cards.get(index); // Retrieve the card at that index
     removeCardFromDeck(index);
-    return randomCard; // Return the random card
+    return randomCardToGet; // Return the random card
   }
 
   /**
