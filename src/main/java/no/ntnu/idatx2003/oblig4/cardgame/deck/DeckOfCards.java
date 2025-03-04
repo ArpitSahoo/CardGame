@@ -1,4 +1,6 @@
-package no.ntnu.idatx2003.oblig4.cardgame;
+package no.ntnu.idatx2003.oblig4.cardgame.deck;
+
+import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
 
 import java.util.ArrayList;
 import java.util.List;
