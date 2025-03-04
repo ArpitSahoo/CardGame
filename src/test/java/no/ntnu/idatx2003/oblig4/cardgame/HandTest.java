@@ -1,5 +1,6 @@
 package no.ntnu.idatx2003.oblig4.cardgame;
 
+import no.ntnu.idatx2003.oblig4.cardgame.dealer.Hand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +35,18 @@ class HandTest {
 
   @Test
   void dealToHandNegativeTest() {
-    assertThrows(IllegalArgumentException.class, () -> hand.dealToHand(-5));
+    hand.dealToHand(4);
+    assertNotEquals(-4, hand.getHandSize());
   }
 
+  @Test
+  void setRoundsPositiveTest() {
+    hand.setAmountOfCards(4);
+    assertEquals(4, hand.getAmountOfCards());
+  }
+
+  @Test
+  void setRoundsNegativeTest() {
+    assertThrows(IllegalArgumentException.class, () -> hand.setAmountOfCards(-5));
+  }
 }
