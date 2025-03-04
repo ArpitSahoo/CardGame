@@ -2,6 +2,8 @@ package no.ntnu.idatx2003.oblig4.cardgame;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
+import no.ntnu.idatx2003.oblig4.cardgame.deck.DeckOfCards;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
