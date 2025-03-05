@@ -1,6 +1,7 @@
 package no.ntnu.idatx2003.oblig4.cardgame.deck;
 
 import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
+import no.ntnu.idatx2003.oblig4.cardgame.dealer.Hand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +84,17 @@ public class DeckOfCards {
    */
   public void removeCardFromDeck(int index) {
     cards.remove(index);
+  }
+
+  public void dealToHand(Hand hand) {
+    int cardsToDeal = 5;
+    ArrayList<PlayingCard> cardsToBeDealt = new ArrayList<>();
+    for (int i = 0; i < cardsToDeal; i++) {
+      getRandomCard();
+      cardsToBeDealt.add(newPlayingCard);
+      cardsToBeDealt.stream().forEach(hand::addCardsToHand);
+    }
+    cardsToBeDealt.clear();
   }
 
 }
