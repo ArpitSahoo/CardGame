@@ -4,56 +4,49 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- TODO: Sett din egen groupID og artifactID -->
-    <groupId>student.ntnu.assignment.cardGame</groupId>
-    <artifactId>Poker-2025</artifactId>
+    <groupId>no.ntnu.idatx2003</groupId>
+    <artifactId>CardGameObligArpit</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- TODO: Sett dine dependencies for JavaFX og JUnit5-testing -->
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.11.4</version>
+            <version>5.10.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>23.0.1</version>
+            <version>21.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>21.0.1</version>
+        </dependency>
+
+
     </dependencies>
-    <!-- TODO: Sett riktig versjon av nødvendige plugins -->
+
     <build>
         <plugins>
-            <!--TheJavacompiler-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-            </plugin>
-            <!--Theunit-testengineSurefire-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.2</version>
-            </plugin>
-            <!--PlugintoexecuteJavaFXapplicationsfromMaven-->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
+                <version>0.0.8</version> <!-- Make sure to use the latest version available -->
                 <configuration>
-                    <!--TODO:Replacewithyourownmain-class-->
-                    <mainClass>student.ntnu.assignment.Main</mainClass>
+                    <mainClass>no.ntnu.idatx2003.oblig4.cardgame.Main</mainClass> <!-- Replace with your main class -->
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>
