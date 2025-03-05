@@ -13,53 +13,25 @@ import java.util.List;
 public class Hand {
   private final DeckOfCards deck;
   private final List<PlayingCard> cardsInHand;
-  private int amountOfCards;
 
   public Hand() {
     deck = new DeckOfCards();
     cardsInHand = new ArrayList<>();
   }
 
-  /**
-   * Mutates the amount of rounds.
-   *
-   * @param amountOfCards that will be dealt.
-   */
-  public void setAmountOfCards(int amountOfCards) {
-    if (amountOfCards < 1) {
-      throw new IllegalArgumentException("Rounds must be greater than 0");
-    }
-    this.amountOfCards = amountOfCards;
-  }
-
-  /**
-   * Accesses how many cards in the game.
-   *
-   * @return amountOfCards that will be played.
-   */
-  public int getAmountOfCards() {
-    return amountOfCards;
+  public void addCardsToHand(PlayingCard card) {
+    cardsInHand.add(card);
   }
 
   public void newRound() {
     if (cardsInHand.isEmpty()) {
-      dealToHand(getAmountOfCards()); // 6 til the user interface has been developed.
+
     }
     removeCardsFromHand();
   }
 
   public void removeCardsFromHand() {
     cardsInHand.clear();
-  }
-
-  public void dealToHand(int cardsToDeal){
-    for (int i = 0; i < cardsToDeal; i++) {
-      addToHand();
-    }
-  }
-
-  public void addToHand() {
-    cardsInHand.add(deck.getRandomCard());
   }
 
   public int getHandSize() {
