@@ -14,15 +14,16 @@ import java.util.Random;
  */
 public class DeckOfCards {
   private List<PlayingCard> cards;
-  private PlayingCard newPlayingCard;
   private final char[] suits = { 'S', 'H', 'D', 'C' };
   private final Random randomCard;
+  private final Hand hand;
 
   /**
    * Creates a deck of cards.
    *
    */
   public DeckOfCards() {
+    hand = new Hand();
     cards = new ArrayList<>();
     addToDeck();
     randomCard = new Random();
@@ -35,7 +36,7 @@ public class DeckOfCards {
   public void addToDeck() {
     for (char suit: suits) {
       for (int cardsNumber = 1; cardsNumber < 14; cardsNumber++) {
-        newPlayingCard = new PlayingCard(suit, cardsNumber);
+        PlayingCard newPlayingCard = new PlayingCard(suit, cardsNumber);
         cards.add(newPlayingCard);
       }
     }
@@ -86,15 +87,12 @@ public class DeckOfCards {
     cards.remove(index);
   }
 
-  public void dealToHand(Hand hand) {
+  public void dealToHand() {
     int cardsToDeal = 5;
-    ArrayList<PlayingCard> cardsToBeDealt = new ArrayList<>();
     for (int i = 0; i < cardsToDeal; i++) {
-      getRandomCard();
-      cardsToBeDealt.add(newPlayingCard);
-      cardsToBeDealt.stream().forEach(hand::addCardsToHand);
+      PlayingCard playingCardToBeDealt = getRandomCard();
+      hand.addCardsToHand(playingCardToBeDealt);
     }
-    cardsToBeDealt.clear();
   }
 
 }
