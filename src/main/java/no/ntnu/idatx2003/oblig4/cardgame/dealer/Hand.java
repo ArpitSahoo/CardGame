@@ -1,5 +1,4 @@
 package no.ntnu.idatx2003.oblig4.cardgame.dealer;
-import no.ntnu.idatx2003.oblig4.cardgame.deck.DeckOfCards;
 import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
 
 import java.util.ArrayList;
@@ -11,11 +10,9 @@ import java.util.List;
  * @version 0.1.1
  */
 public class Hand {
-  private final DeckOfCards deck;
   private final List<PlayingCard> cardsInHand;
 
   public Hand() {
-    deck = new DeckOfCards();
     cardsInHand = new ArrayList<>();
   }
 
@@ -24,9 +21,6 @@ public class Hand {
   }
 
   public void newRound() {
-    if (cardsInHand.isEmpty()) {
-
-    }
     removeCardsFromHand();
   }
 
@@ -37,5 +31,26 @@ public class Hand {
   public int getHandSize() {
     return cardsInHand.size();
   }
+
+  public int checkSum() {
+    return cardsInHand.stream().mapToInt(PlayingCard::getFace).sum();
+  }
+
+  public String checkAllHearts() {
+    return cardsInHand.stream()
+        .filter(card -> card.getSuit() == 'H')
+        .toList()
+        .toString();
+  }
+
+  public String checkSpareQueen() {
+    return cardsInHand.stream()
+        .filter(card -> card.getSuit() == 'S')
+        .filter(card -> card.getFace() == 12)
+        .toList()
+        .toString();
+  }
+
+
 
 }
