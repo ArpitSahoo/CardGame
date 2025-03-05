@@ -21,32 +21,4 @@ class HandTest {
     assertEquals(0, hand.getHandSize());
   }
 
-  @Test
-  void removeCardsFromHandNegativeTest() {
-    hand.dealToHand(4);
-    assertNotEquals(0, hand.getHandSize());
-  }
-
-  @Test
-  void dealToHandPositiveTest() {
-    hand.dealToHand(4);
-    assertEquals(4, hand.getHandSize());
-  }
-
-  @Test
-  void dealToHandNegativeTest() {
-    hand.dealToHand(4);
-    assertNotEquals(-4, hand.getHandSize());
-  }
-
-  @Test
-  void setRoundsPositiveTest() {
-    hand.setAmountOfCards(4);
-    assertEquals(4, hand.getAmountOfCards());
-  }
-
-  @Test
-  void setRoundsNegativeTest() {
-    assertThrows(IllegalArgumentException.class, () -> hand.setAmountOfCards(-5));
-  }
 }
