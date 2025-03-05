@@ -52,8 +52,8 @@ public class Hand {
     cardsInHand.clear();
   }
 
-  public void dealToHand(int rounds){
-    for (int i = 0; i < rounds; i++) {
+  public void dealToHand(int cardsToDeal){
+    for (int i = 0; i < cardsToDeal; i++) {
       addToHand();
     }
   }
@@ -65,7 +65,5 @@ public class Hand {
   public int getHandSize() {
     return cardsInHand.size();
   }
-
-
 
 }
