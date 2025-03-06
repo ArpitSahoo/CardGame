@@ -3,6 +3,7 @@ package no.ntnu.idatx2003.oblig4.cardgame;
 import static org.junit.jupiter.api.Assertions.*;
 
 import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
+import no.ntnu.idatx2003.oblig4.cardgame.dealer.Hand;
 import no.ntnu.idatx2003.oblig4.cardgame.deck.DeckOfCards;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,11 +15,13 @@ import java.util.List;
 class DeckOfCardsTest {
   DeckOfCards deck = new DeckOfCards();
   PlayingCard playingCard;
-  final char[] suits = { 'S', 'H', 'D', 'C' };
+  Hand hand;
   List<PlayingCard>cards;
-    List<PlayingCard> expected;
+  List<PlayingCard> expected;
+
   @BeforeEach
   void setUp() {
+    hand = new Hand();
     cards = new ArrayList<>();
     deck = new DeckOfCards();
     expected = new ArrayList<>();
@@ -84,4 +87,17 @@ class DeckOfCardsTest {
     assertNotEquals(initialSize, deck.getCards().size(), "The deck size should be reduced by one");
   }
 
+  @Test
+  void positiveTestForDealToHand(){
+    deck.dealToHand();
+    assertEquals(52 - 5, deck.getCards().size(), "The deck size should be reduced by 5" );
+  }
+
+  @Test
+  void negativeTestForDealToHand(){
+    deck.dealToHand();
+    assertNotEquals(0, deck.getCards().size());
+    assertNotEquals(52, deck.getCards().size());
+    assertNotEquals(52-4, deck.getCards().size());
+  }
 }
