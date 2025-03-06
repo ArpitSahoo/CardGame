@@ -3,14 +3,15 @@ import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Represents the dealers hand.
  *
- * @version 0.1.1
+ * @version 0.2.2
  */
 public class Hand {
-  private final List<PlayingCard> cardsInHand;
+  private List<PlayingCard> cardsInHand;
 
   public Hand() {
     cardsInHand = new ArrayList<>();
@@ -18,10 +19,6 @@ public class Hand {
 
   public void addCardsToHand(PlayingCard card) {
     cardsInHand.add(card);
-  }
-
-  public void newRound() {
-    removeCardsFromHand();
   }
 
   public void removeCardsFromHand() {
@@ -33,24 +30,30 @@ public class Hand {
   }
 
   public int checkSum() {
-    return cardsInHand.stream().mapToInt(PlayingCard::getFace).sum();
+    return cardsInHand
+        .stream()
+        .mapToInt(PlayingCard::getFace)
+        .sum();
   }
 
   public String checkAllHearts() {
-    return cardsInHand.stream()
+    String hearts = cardsInHand.stream()
         .filter(card -> card.getSuit() == 'H')
-        .toList()
-        .toString();
+        // map makes the two fields to one
+        .map(card -> card.getSuit() + String.valueOf(card.getFace()))
+        // Collect: collects all the streams to one with a space.
+        .collect(Collectors.joining(" "));
+    return hearts.isEmpty() ? "No Hearts" : hearts;
   }
 
-  public String checkSpareQueen() {
+  public boolean checkSpareQueen() {
     return cardsInHand.stream()
-        .filter(card -> card.getSuit() == 'S')
-        .filter(card -> card.getFace() == 12)
-        .toList()
-        .toString();
+        .anyMatch(card -> card.getSuit() == 'S' && card.getFace() == 12);
   }
 
-
+  public boolean checkFlush() {
+    return cardsInHand.stream()
+        .allMatch(card -> cardsInHand.getFirst().getSuit() == card.getSuit());
+  }
 
 }
