@@ -44,7 +44,9 @@ public class DeckOfCards {
 
   /**
    * A method that retrieves cards from the deck.
+   *
    *<p>This method is used for the test class.</p>
+   *
    * @return cards.
    */
   public List<PlayingCard> getCards() {
@@ -68,8 +70,8 @@ public class DeckOfCards {
     return randomCard.nextInt(getSize());
   }
 
-  /**
-   * Accesses a random card from the deck.
+  /**Accesses a random card from the deck.
+   *
    * @return a random card from the deck.
    */
   public PlayingCard getRandomCard() {
