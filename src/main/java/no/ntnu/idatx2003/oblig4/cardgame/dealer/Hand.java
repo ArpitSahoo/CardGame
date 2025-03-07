@@ -56,4 +56,10 @@ public class Hand {
         .allMatch(card -> cardsInHand.getFirst().getSuit() == card.getSuit());
   }
 
+  public String getAllCards() {
+    return cardsInHand.stream()
+        .map(PlayingCard::toString)
+        .collect(Collectors.joining(" "));
+
+  }
 }
