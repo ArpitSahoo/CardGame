@@ -90,6 +90,7 @@ public class DeckOfCards {
   }
 
   public void dealToHand() {
+    hand.removeCardsFromHand();
     int cardsToDeal = 5;
     for (int i = 0; i < cardsToDeal; i++) {
       PlayingCard playingCardToBeDealt = getRandomCard();
