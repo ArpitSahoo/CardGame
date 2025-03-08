@@ -89,7 +89,7 @@ class HandTest {
   }
 
   @Test
-  void positiveTestForFlush(){
+  void positiveTestForFlush() {
     hand.addCardsToHand(playingCard);
     hand.addCardsToHand(playingCard2);
     hand.addCardsToHand(playingCard3);
@@ -100,7 +100,7 @@ class HandTest {
   }
 
   @Test
-  void negativeTestForFlush(){
+  void negativeTestForFlush() {
     hand.addCardsToHand(playingCard);
     hand.addCardsToHand(playingCard2);
     hand.addCardsToHand(playingCard3);
@@ -110,5 +110,14 @@ class HandTest {
     assertFalse(hand.checkFlush());
   }
 
+  @Test
+  void positiveTestGetAllCards() {
+    hand.addCardsToHand(playingCard);
+    hand.addCardsToHand(playingCard2);
+    hand.addCardsToHand(playingCard3);
+    hand.addCardsToHand(playingCard4);
+    hand.addCardsToHand(playingCard5);
+    assertEquals("H1 H2 H3 H4 H5", hand.getAllCards());
+  }
 
 }
