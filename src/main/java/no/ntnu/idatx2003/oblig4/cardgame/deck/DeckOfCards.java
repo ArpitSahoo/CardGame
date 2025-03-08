@@ -1,11 +1,10 @@
 package no.ntnu.idatx2003.oblig4.cardgame.deck;
 
-import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
-import no.ntnu.idatx2003.oblig4.cardgame.dealer.Hand;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
+import no.ntnu.idatx2003.oblig4.cardgame.dealer.Hand;
 
 /**
  * Represents a Deck, which is a collection of {@link PlayingCard} objects.
@@ -34,7 +33,7 @@ public class DeckOfCards {
    *
    */
   public void addToDeck() {
-    for (char suit: suits) {
+    for (char suit : suits) {
       for (int cardsNumber = 1; cardsNumber < 14; cardsNumber++) {
         PlayingCard newPlayingCard = new PlayingCard(suit, cardsNumber);
         cards.add(newPlayingCard);
@@ -55,15 +54,17 @@ public class DeckOfCards {
 
   /**
    * Access the number of cards in the deck.
+   *
    * @return returns the number of cards in the deck.
    */
-  public int getSize(){
+  public int getSize() {
     return cards.size();
   }
 
   /**
    * Generates a random number from the number of cards
    * in the deck.
+   *
    * @return random number.
    */
   public int randomIndexNumber() {
@@ -83,18 +84,26 @@ public class DeckOfCards {
 
   /**
    * Removes the card from the deck.
+   *
    * @param index of the card that will be removed from the deck.
    */
   public void removeCardFromDeck(int index) {
     cards.remove(index);
   }
 
+  /**
+   * Clears all cards from the deck.
+   */
   public void clearTheDeck() {
     cards.clear();
   }
 
+  /**
+   * Creates a new deck of cards if there is
+   * an inefficients amount of cards.
+   */
   public void newDeck() {
-    if(getSize() < 6 ){
+    if (getSize() < 6) {
       clearTheDeck();
     }
     addToDeck();
@@ -119,7 +128,7 @@ public class DeckOfCards {
    * @return a string if it's a flush or not.
    */
   public String isFlush() {
-    if (hand.checkFlush()){
+    if (hand.checkFlush()) {
       return "FLUSH BABY";
     }
     return "No flush";
@@ -131,7 +140,7 @@ public class DeckOfCards {
    * @return Returns a spring if there is a spare queen.
    */
   public String isSpareQueen() {
-    if(hand.checkSpareQueen()) {
+    if (hand.checkSpareQueen()) {
       return "FOUND";
     }
     return "None..";

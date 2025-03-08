@@ -17,18 +17,37 @@ public class Hand {
     cardsInHand = new ArrayList<>();
   }
 
+  /**
+   * Adds cards to the hand.
+   *
+   * @param card in the hand.
+   */
   public void addCardsToHand(PlayingCard card) {
     cardsInHand.add(card);
   }
 
+  /**
+   * Clears all the cards in the hand.
+   *
+   */
   public void removeCardsFromHand() {
     cardsInHand.clear();
   }
 
+  /**
+   * Gets the amount of cards in the hand.
+   *
+   * @return cardsInHand.size();
+   */
   public int getHandSize() {
     return cardsInHand.size();
   }
 
+  /**
+   * Calculates the total sum of the cards.
+   *
+   * @return an integer of the total sum.
+   */
   public int checkSum() {
     return cardsInHand
         .stream()
@@ -36,6 +55,11 @@ public class Hand {
         .sum();
   }
 
+
+  /**
+   *
+   * @return
+   */
   public String checkAllHearts() {
     String hearts = cardsInHand.stream()
         .filter(card -> card.getSuit() == 'H')
