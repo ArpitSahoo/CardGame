@@ -87,4 +87,6 @@ public class PlayingCard {
     hash = 31 * hash + getFace();
     return hash;
   }
+
+  //TODO create new tests.
 }
