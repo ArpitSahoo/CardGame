@@ -71,7 +71,8 @@ public class DeckOfCards {
     return randomCard.nextInt(getSize());
   }
 
-  /**Accesses a random card from the deck.
+  /**
+   * Accesses a random card from the deck.
    *
    * @return a random card from the deck.
    */
@@ -105,17 +106,17 @@ public class DeckOfCards {
   public void newDeck() {
     if (getSize() < 6) {
       clearTheDeck();
+      addToDeck();
     }
-    addToDeck();
   }
 
   /**
    * A method that deals the cards to the player.
    */
   public void dealToHand() {
+    newDeck();
     hand.removeCardsFromHand();
     int cardsToDeal = 5;
-    newDeck();
     for (int i = 0; i < cardsToDeal; i++) {
       PlayingCard playingCardToBeDealt = getRandomCard();
       hand.addCardsToHand(playingCardToBeDealt);
@@ -172,4 +173,5 @@ public class DeckOfCards {
     return hand.getAllCards();
   }
 
+  //TODO create new tests.
 }
