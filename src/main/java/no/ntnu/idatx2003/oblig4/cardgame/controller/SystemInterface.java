@@ -13,7 +13,7 @@ import no.ntnu.idatx2003.oblig4.cardgame.gui.View;
  *
  * @since 0.0.1
  * @author arpit
- * @version 0.2.0
+ * @version 0.2.1
  */
 public class SystemInterface {
   private DeckOfCards deck;
@@ -53,4 +53,6 @@ public class SystemInterface {
     deck.sumOfCards();
     view.updateAllChecks();
   }
+
+  //TODO create new tests.
 }
