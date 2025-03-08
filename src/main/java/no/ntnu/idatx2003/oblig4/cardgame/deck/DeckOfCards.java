@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * Represents a Deck, which is a collection of {@link PlayingCard} objects.
  *
- * @version 0.2.0
+ * @version 0.3.0
  */
 public class DeckOfCards {
   private List<PlayingCard> cards;
@@ -89,13 +89,64 @@ public class DeckOfCards {
     cards.remove(index);
   }
 
+  public void clearTheDeck() {
+    cards.clear();
+  }
+
+  public void newDeck() {
+    if(getSize() < 6 ){
+      clearTheDeck();
+    }
+    addToDeck();
+  }
+
+  /**
+   * A method that deals the cards to the player.
+   */
   public void dealToHand() {
     hand.removeCardsFromHand();
     int cardsToDeal = 5;
+    newDeck();
     for (int i = 0; i < cardsToDeal; i++) {
       PlayingCard playingCardToBeDealt = getRandomCard();
       hand.addCardsToHand(playingCardToBeDealt);
     }
+  }
+
+  /**
+   * Checks if the hand contains a flush (all cards of the same suit).
+   *
+   * @return a string if it's a flush or not.
+   */
+  public String isFlush() {
+    if (hand.checkFlush()){
+      return "FLUSH BABY";
+    }
+    return "No flush";
+  }
+
+  /**
+   * Checks if the hand contains a spare queen.
+   *
+   * @return Returns a spring if there is a spare queen.
+   */
+  public String isSpareQueen() {
+    if(hand.checkSpareQueen()) {
+      return "FOUND";
+    }
+    return "None..";
+  }
+
+  public String isHearts() {
+    return hand.checkAllHearts();
+  }
+
+  public int sumOfCards() {
+    return hand.checkSum();
+  }
+
+  public String getCardsFromHand() {
+    return hand.getAllCards();
   }
 
 }
