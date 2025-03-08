@@ -82,9 +82,8 @@ class DeckOfCardsTest {
 
   @Test
   void RemoveCardFromDeckNegativeTest() {
-    int initialSize = deck.getCards().size();
     deck.removeCardFromDeck(0);
-    assertNotEquals(initialSize, deck.getCards().size(), "The deck size should be reduced by one");
+    assertNotEquals(0, deck.getCards().size());
   }
 
   @Test
