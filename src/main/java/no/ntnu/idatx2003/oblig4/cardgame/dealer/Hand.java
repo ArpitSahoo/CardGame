@@ -58,8 +58,7 @@ public class Hand {
 
   public String getAllCards() {
     return cardsInHand.stream()
-        .map(PlayingCard::toString)
+        .map(card -> card.getSuit() + String.valueOf(card.getFace()))
         .collect(Collectors.joining(" "));
-
   }
 }
