@@ -137,14 +137,28 @@ public class DeckOfCards {
     return "None..";
   }
 
+  /** Check if the hand contains a hearts.
+   *
+   * @return A string of all the hearts.
+   */
   public String isHearts() {
     return hand.checkAllHearts();
   }
 
+  /**
+   * Calculates the sum of all the cards on the hand.
+   *
+   * @return hand.checkSum();
+   */
   public int sumOfCards() {
     return hand.checkSum();
   }
 
+  /**
+   * Retrieves all the cards from the hand.
+   *
+   * @return all the cards from the hand.
+   */
   public String getCardsFromHand() {
     return hand.getAllCards();
   }
