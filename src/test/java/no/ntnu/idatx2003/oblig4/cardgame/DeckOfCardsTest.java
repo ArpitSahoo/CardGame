@@ -14,18 +14,28 @@ import java.util.List;
 
 class DeckOfCardsTest {
   DeckOfCards deck = new DeckOfCards();
-  PlayingCard playingCard;
   Hand hand;
-  List<PlayingCard>cards;
   List<PlayingCard> expected;
+  PlayingCard playingCard1;
+  PlayingCard playingCard2;
+  PlayingCard playingCard3;
+  PlayingCard playingCard4;
+  PlayingCard playingCard5;
+  PlayingCard playingCard6;
 
   @BeforeEach
   void setUp() {
     hand = new Hand();
-    cards = new ArrayList<>();
     deck = new DeckOfCards();
     expected = new ArrayList<>();
     expected.addAll(deck.getCards());
+
+    playingCard1 = new PlayingCard('H', 1);
+    playingCard2 = new PlayingCard('H', 2);
+    playingCard3 = new PlayingCard('H', 3);
+    playingCard4 = new PlayingCard('H', 4);
+    playingCard5 = new PlayingCard('H', 5);
+    playingCard6 = new PlayingCard('S', 6);
   }
 
   @Test
@@ -87,16 +97,27 @@ class DeckOfCardsTest {
   }
 
   @Test
-  void positiveTestForDealToHand(){
+  void positiveTestForDealToHand() {
     deck.dealToHand();
     assertEquals(52 - 5, deck.getCards().size(), "The deck size should be reduced by 5" );
   }
 
   @Test
-  void negativeTestForDealToHand(){
+  void negativeTestForDealToHand() {
     deck.dealToHand();
     assertNotEquals(0, deck.getCards().size());
     assertNotEquals(52, deck.getCards().size());
     assertNotEquals(52-4, deck.getCards().size());
+  }
+
+  @Test
+  void isFlushPositiveTest() {
+    hand.addCardsToHand(playingCard1);
+    hand.addCardsToHand(playingCard2);
+    hand.addCardsToHand(playingCard3);
+    hand.addCardsToHand(playingCard4);
+    hand.addCardsToHand(playingCard5);
+
+    assertEquals("FLUSH BABY", deck.isFlush());
   }
 }
