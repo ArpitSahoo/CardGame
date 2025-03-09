@@ -1,9 +1,9 @@
 package no.ntnu.idatx2003.oblig4.cardgame.dealer;
-import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
 
 /**
  * Represents the dealers hand.
@@ -13,6 +13,10 @@ import java.util.stream.Collectors;
 public class Hand {
   private List<PlayingCard> cardsInHand;
 
+  /**
+   * a constructor that creates an instance of
+   * all the cards in the hand.
+   */
   public Hand() {
     cardsInHand = new ArrayList<>();
   }
@@ -57,8 +61,13 @@ public class Hand {
 
 
   /**
+   * Checks the hand if it contains hearts.
    *
-   * @return
+   * <p>Streams the values, filters the suits to find H. Then converts
+   *   stream to string
+   * </p>
+   *
+   * @return The cards if it contains a heart.
    */
   public String checkAllHearts() {
     String hearts = cardsInHand.stream()
@@ -70,16 +79,32 @@ public class Hand {
     return hearts.isEmpty() ? "No Hearts" : hearts;
   }
 
+  /**
+   * Checks the hand if it contains a spare queen.
+   *
+   * @return True if the spare queen was found.
+   */
   public boolean checkSpareQueen() {
     return cardsInHand.stream()
         .anyMatch(card -> card.getSuit() == 'S' && card.getFace() == 12);
   }
 
+  /**
+   * Checks if there is a flush.
+   *
+   * @return True if the hands contains a flush.
+   */
   public boolean checkFlush() {
     return cardsInHand.stream()
         .allMatch(card -> cardsInHand.getFirst().getSuit() == card.getSuit());
   }
 
+  /**
+   * Retries all the cards in the hand and converts it
+   * to text.
+   *
+   * @return String of cards.
+   */
   public String getAllCards() {
     return cardsInHand.stream()
         .map(card -> card.getSuit() + String.valueOf(card.getFace()))
