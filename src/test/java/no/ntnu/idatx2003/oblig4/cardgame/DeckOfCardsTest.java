@@ -3,7 +3,7 @@ package no.ntnu.idatx2003.oblig4.cardgame;
 import static org.junit.jupiter.api.Assertions.*;
 
 import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
-import no.ntnu.idatx2003.oblig4.cardgame.dealer.Hand;
+import no.ntnu.idatx2003.oblig4.cardgame.dealer.DealersHand;
 import no.ntnu.idatx2003.oblig4.cardgame.deck.DeckOfCards;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import java.util.List;
 
 class DeckOfCardsTest {
   DeckOfCards deck = new DeckOfCards();
-  Hand hand;
+  DealersHand dealersHand;
   List<PlayingCard> expected;
   PlayingCard playingCard1;
   PlayingCard playingCard2;
@@ -25,7 +25,7 @@ class DeckOfCardsTest {
 
   @BeforeEach
   void setUp() {
-    hand = new Hand();
+    dealersHand = new DealersHand();
     deck = new DeckOfCards();
     expected = new ArrayList<>();
     expected.addAll(deck.getCards());
@@ -35,7 +35,7 @@ class DeckOfCardsTest {
     playingCard3 = new PlayingCard('H', 3);
     playingCard4 = new PlayingCard('H', 4);
     playingCard5 = new PlayingCard('H', 5);
-    playingCard6 = new PlayingCard('S', 6);
+    playingCard6 = new PlayingCard('S', 12);
   }
 
   @Test
@@ -112,12 +112,34 @@ class DeckOfCardsTest {
 
   @Test
   void isFlushPositiveTest() {
-    hand.addCardsToHand(playingCard1);
-    hand.addCardsToHand(playingCard2);
-    hand.addCardsToHand(playingCard3);
-    hand.addCardsToHand(playingCard4);
-    hand.addCardsToHand(playingCard5);
+    dealersHand.addCardsToHand(playingCard1);
+    dealersHand.addCardsToHand(playingCard2);
+    dealersHand.addCardsToHand(playingCard3);
+    dealersHand.addCardsToHand(playingCard4);
+    dealersHand.addCardsToHand(playingCard5);
 
     assertEquals("FLUSH BABY", deck.isFlush());
   }
+
+  @Test
+  void isFlushNegativeTest() {
+    dealersHand.addCardsToHand(playingCard1);
+    dealersHand.addCardsToHand(playingCard2);
+    dealersHand.addCardsToHand(playingCard3);
+    dealersHand.addCardsToHand(playingCard4);
+    dealersHand.addCardsToHand(playingCard6);
+    boolean wasFlush = dealersHand.checkFlush();
+    assertFalse(wasFlush, deck.isFlush());
+  }
+
+  @Test
+  void isSpareQueenPositiveTest() {
+    dealersHand.addCardsToHand(new PlayingCard('S', 1));
+    dealersHand.addCardsToHand(new PlayingCard('H', 10));
+    dealersHand.addCardsToHand(new PlayingCard('D', 5));
+    dealersHand.addCardsToHand(new PlayingCard('C', 2));
+    dealersHand.addCardsToHand(new PlayingCard('S', 3));
+    assertEquals("None..", deck.isSpareQueen());
+  }
+
 }
