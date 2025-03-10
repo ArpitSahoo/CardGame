@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
-import no.ntnu.idatx2003.oblig4.cardgame.dealer.Hand;
+import no.ntnu.idatx2003.oblig4.cardgame.dealer.DealersHand;
 
 /**
  * Represents a Deck, which is a collection of {@link PlayingCard} objects.
@@ -15,14 +15,14 @@ public class DeckOfCards {
   private List<PlayingCard> cards;
   private final char[] suits = { 'S', 'H', 'D', 'C' };
   private final Random randomCard;
-  private final Hand hand;
+  private final DealersHand dealersHand;
 
   /**
    * Creates a deck of cards.
    *
    */
   public DeckOfCards() {
-    hand = new Hand();
+    dealersHand = new DealersHand();
     cards = new ArrayList<>();
     addToDeck();
     randomCard = new Random();
@@ -115,11 +115,11 @@ public class DeckOfCards {
    */
   public void dealToHand() {
     newDeck();
-    hand.removeCardsFromHand();
+    dealersHand.removeCardsFromHand();
     int cardsToDeal = 5;
     for (int i = 0; i < cardsToDeal; i++) {
       PlayingCard playingCardToBeDealt = getRandomCard();
-      hand.addCardsToHand(playingCardToBeDealt);
+      dealersHand.addCardsToHand(playingCardToBeDealt);
     }
   }
 
@@ -129,7 +129,7 @@ public class DeckOfCards {
    * @return a string if it's a flush or not.
    */
   public String isFlush() {
-    if (hand.checkFlush()) {
+    if (dealersHand.checkFlush()) {
       return "FLUSH BABY";
     }
     return "No flush";
@@ -141,7 +141,7 @@ public class DeckOfCards {
    * @return Returns a spring if there is a spare queen.
    */
   public String isSpareQueen() {
-    if (hand.checkSpareQueen()) {
+    if (dealersHand.checkSpareQueen()) {
       return "FOUND";
     }
     return "None..";
@@ -152,7 +152,7 @@ public class DeckOfCards {
    * @return A string of all the hearts.
    */
   public String isHearts() {
-    return hand.checkAllHearts();
+    return dealersHand.checkAllHearts();
   }
 
   /**
@@ -161,7 +161,7 @@ public class DeckOfCards {
    * @return hand.checkSum();
    */
   public int sumOfCards() {
-    return hand.checkSum();
+    return dealersHand.checkSum();
   }
 
   /**
@@ -170,8 +170,6 @@ public class DeckOfCards {
    * @return all the cards from the hand.
    */
   public String getCardsFromHand() {
-    return hand.getAllCards();
+    return dealersHand.getAllCards();
   }
-
-  //TODO create new tests.
 }
