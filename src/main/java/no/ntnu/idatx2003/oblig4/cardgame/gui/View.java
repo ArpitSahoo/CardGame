@@ -17,7 +17,7 @@ import no.ntnu.idatx2003.oblig4.cardgame.deck.DeckOfCards;
  * It provides a layout for displaying the dealt cards and checking various card conditions.
  *
  * @since 0.0.1
- * @author [Your Name]
+ * @author Arpit
  * @version 0.2.0
  */
 public class View extends Application {
@@ -41,7 +41,6 @@ public class View extends Application {
     controller = new SystemInterface(deck, this);
     BorderPane borderPane = new BorderPane();
     borderPane.setCenter(centerPaneCreate());
-
     Scene scene = new Scene(borderPane);
     stage.setScene(scene);
     stage.setTitle("Poker");
@@ -128,7 +127,8 @@ public class View extends Application {
     checkCardPane.add(getCheckSum(), 1, 0);
     checkCardPane.add(getSpareQueenPane(), 0, 1);
     checkCardPane.add(getFlushPane(), 1, 1);
-    checkCardPane.setAlignment(Pos.BOTTOM_LEFT);
+    checkCardPane.setAlignment(Pos.CENTER);
+    checkCardPane.setPrefWidth(400);
     checkCardPane.setHgap(20);
     checkCardPane.setVgap(20);
     return checkCardPane;
@@ -176,6 +176,7 @@ public class View extends Application {
     spareQueenPane.add(spareQueen, 0, 0);
     spareQueenPane.add(wasFound, 1, 0);
     spareQueenPane.setVgap(10);
+    spareQueenPane.setPrefWidth(500);
     return spareQueenPane;
   }
 
