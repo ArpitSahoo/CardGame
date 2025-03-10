@@ -10,14 +10,14 @@ import no.ntnu.idatx2003.oblig4.cardgame.cards.PlayingCard;
  *
  * @version 0.2.2
  */
-public class Hand {
+public class DealersHand {
   private List<PlayingCard> cardsInHand;
 
   /**
    * a constructor that creates an instance of
    * all the cards in the hand.
    */
-  public Hand() {
+  public DealersHand() {
     cardsInHand = new ArrayList<>();
   }
 
