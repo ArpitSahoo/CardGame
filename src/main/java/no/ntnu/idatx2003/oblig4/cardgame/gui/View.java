@@ -52,7 +52,7 @@ public class View extends Application {
    *
    * @return a {@code Pane} containing the interface layout
    */
-  public Pane centerPaneCreate() {
+  private Pane centerPaneCreate() {
     VBox centerPane = new VBox();
     centerPane.getChildren().addAll(buttonAndCards(), getCheckCardPane());
     return centerPane;
@@ -63,7 +63,7 @@ public class View extends Application {
    *
    * @return an {@code HBox} containing buttons and card display
    */
-  public HBox buttonAndCards() {
+  private HBox buttonAndCards() {
     HBox buttonAndCards = new HBox();
     buttonAndCards.getChildren().addAll(getCardPane(), getButtons());
     return buttonAndCards;
@@ -74,7 +74,7 @@ public class View extends Application {
    *
    * @return a {@code FlowPane} containing the displayed cards
    */
-  public FlowPane getCardPane() {
+  private FlowPane getCardPane() {
     FlowPane cardPane = new FlowPane();
     cardPane.setStyle("-fx-background-color: lightblue;");
     cardsInHand = new Text("");
@@ -121,7 +121,7 @@ public class View extends Application {
    *
    * @return a {@code GridPane} containing check results
    */
-  public GridPane getCheckCardPane() {
+  private GridPane getCheckCardPane() {
     GridPane checkCardPane = new GridPane();
     checkCardPane.add(getHeartsPane(), 0, 0);
     checkCardPane.add(getCheckSum(), 1, 0);
@@ -139,7 +139,7 @@ public class View extends Application {
    *
    * @return a {@code GridPane} containing the sum display
    */
-  public GridPane getCheckSum() {
+  private GridPane getCheckSum() {
     GridPane checkSumPane = new GridPane();
     Text sum = new Text("Sum: ");
     totalSum = new Text("0");
@@ -154,7 +154,7 @@ public class View extends Application {
    *
    * @return a {@code GridPane} containing heart check results
    */
-  public GridPane getHeartsPane() {
+  private GridPane getHeartsPane() {
     GridPane heartsPane = new GridPane();
     Text hearts = new Text("Hearts: ");
     heartsFound = new Text("Something");
@@ -169,7 +169,7 @@ public class View extends Application {
    *
    * @return a {@code GridPane} containing spare queen check results
    */
-  public GridPane getSpareQueenPane() {
+  private GridPane getSpareQueenPane() {
     GridPane spareQueenPane = new GridPane();
     Text spareQueen = new Text("Spare Queen: ");
     wasFound = new Text("yes/no");
@@ -185,7 +185,7 @@ public class View extends Application {
    *
    * @return a {@code GridPane} containing flush check results
    */
-  public GridPane getFlushPane() {
+  private GridPane getFlushPane() {
     GridPane flushPane = new GridPane();
     Text flush = new Text("Flush: ");
     flushFound = new Text("yes/no");
