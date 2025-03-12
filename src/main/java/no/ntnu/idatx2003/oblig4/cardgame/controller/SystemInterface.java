@@ -54,5 +54,4 @@ public class SystemInterface {
     view.updateAllChecks();
   }
 
-  //TODO create new tests.
 }
